@@ -9,6 +9,10 @@ Most Linux kernel WireGuard users are used to adding an interface with `ip link 
 ```
 $ wireguard-go wg0
 ```
+OR
+```
+$ ENCRYPTION=AES wireguard-go wg0
+```
 
 This will create an interface and fork into the background. To remove the interface, use the usual `ip link del wg0`, or if your system does not support removing interfaces directly, you may instead remove the control socket via `rm -f /var/run/wireguard/wg0.sock`, which will result in wireguard-go shutting down.
 
@@ -16,6 +20,10 @@ To run wireguard-go without forking to the background, pass `-f` or `--foregroun
 
 ```
 $ wireguard-go -f wg0
+```
+OR
+```
+$ ENCRYPTION=AES wireguard-go -f wg0
 ```
 
 When an interface is running, you may use [`wg(8)`](https://git.zx2c4.com/wireguard-tools/about/src/man/wg.8) to configure it, as well as the usual `ip(8)` and `ifconfig(8)` commands.
